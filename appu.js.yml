@@ -6,7 +6,7 @@ env:
  AWS_ACCESS_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
  AWS_REGION: ${{ secrets.AWS_REGION }}
- ECR_REPOSITORY: greens-ci-cd-eks
+ ECR_REPOSITORY: games-ci-cd-eks
 
 
 
@@ -60,7 +60,7 @@ jobs:
        aws eks update-kubeconfig --name greens-cluster-cluster --region ap-south-1
        kubectl get pods
       
-       sed -i "s|default/greens-demo|${{ env.RELEASE_IMAGE }}|g" k8s.yaml
+       sed -i "s|default/games-demo|${{ env.RELEASE_IMAGE }}|g" k8s.yaml
        cat k8s.yaml
        kubectl apply -f k8s-service.yaml
        kubectl apply -f k8s.yaml 
